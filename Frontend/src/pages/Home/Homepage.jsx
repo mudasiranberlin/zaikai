@@ -5,6 +5,7 @@ import Header from '../../Componenet/Header'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from "react-router";
+import { formatMoney } from '../../utils/money';
 
 function Homepage({cart}) {
   const [products,setProducts] = useState([])
@@ -41,7 +42,7 @@ if (loading) {
     
     <>
     <title>Ecommerce</title>
-    <Header/>
+    <Header cart={cart}/>
     <div className="home-page">
       <div className="products-grid">
         {
@@ -67,7 +68,7 @@ if (loading) {
           </div>
 
           <div className="product-price">
-            ${(product.priceCents/100).toFixed(2)}
+            {formatMoney(product.priceCents)}
           </div>
 
           <div className="product-quantity-container">

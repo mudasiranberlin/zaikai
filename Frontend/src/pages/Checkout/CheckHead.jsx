@@ -2,7 +2,14 @@ import React from 'react'
 import './checkout-header.css'
 import { Link } from 'react-router'
 
-function CheckHead() {
+
+function CheckHead({cart}) {
+    let totalQuantity = 0;
+  cart.forEach(cartItem => {
+    totalQuantity += cartItem.quantity
+  });
+  console.log(totalQuantity);
+  
   return (
     <>
     <div className="checkout-header">

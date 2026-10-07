@@ -4,16 +4,17 @@ import { Link, NavLink } from 'react-router'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function Header() {
+function Header({cart}) {
   
-  const [cart,setCart] = useState([])
-  useEffect(()=>{
-    axios.get('http://localhost:3000/api/cart-items')
-  .then((response)=>{
-    console.log(response.data);
-    setCart(response.data)
-  })
-  },[])
+  // const [cart,setCart] = useState([])
+  // useEffect(()=>{
+  //   axios.get('http://localhost:3000/api/cart-items')
+  // .then((response)=>{
+  //   console.log(response.data);
+  //   setCart(response.data)
+  // })
+  // },[])
+  
   let totalQuantity = 0;
   cart.forEach(cartItem => {
     totalQuantity += cartItem.quantity

@@ -2,11 +2,11 @@ import React from 'react'
 import './tracking.css'
 import Header from '../../Componenet/Header'
 
-function Tracking() {
+function Tracking({cart}) {
   return (
     <>
     <title>Tracking</title>
-    <Header/>
+    <Header cart= {cart}/>
 
     <div className="tracking-page">
       <div className="order-tracking">
