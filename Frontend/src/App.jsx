@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
-import Homepage from './pages/Homepage'
-
+import { Route, Routes } from 'react-router'
+import Homepage from './pages/Home/Homepage'
+import Checkout from './pages/Checkout/Checkout'
+import Orders from './pages/Order/Orders'
+import Tracking from './pages/Tracking/Tracking'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <Homepage/>
+
+    <Routes>
+      <Route index element={<Homepage/>}></Route>
+      <Route path='checkout' element={<Checkout/>}></Route>
+      <Route path='orders' element={<Orders/>}></Route>
+      <Route path='tracking' element={<Tracking/>}></Route>
+    </Routes>
   )
 }
 
