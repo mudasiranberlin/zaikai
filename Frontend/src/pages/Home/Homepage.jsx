@@ -1,12 +1,23 @@
 
 import './Homepage.css'
 import Header from '../../Componenet/Header'
-import { products } from '../../data/products'
-// import axios from 'axios';
+// import { products } from '../../data/products'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-function Homepage() {
+function Homepage({cart}) {
+  const [products,setProduct] = useState([])
+
+  useEffect(()=>{
+    axios.get('http://localhost:3000/api/products')
+  .then((response)=>{
+    console.log(response.data);
+    setProduct(response.data)
+  })
+  },[])
 
   return (
+    
     <>
     <title>Ecommerce</title>
     <Header/>

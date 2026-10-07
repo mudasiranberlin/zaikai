@@ -1,8 +1,28 @@
 import React from 'react'
 import './header.css'
 import { Link, NavLink } from 'react-router'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function Header() {
+  
+  const [cart,setCart] = useState([])
+  useEffect(()=>{
+    axios.get('http://localhost:3000/api/cart-items')
+  .then((response)=>{
+    console.log(response.data);
+    setCart(response.data)
+  })
+  },[])
+
+
+
+  let totalQuantity = 0;
+  cart.forEach(cartItem => {
+    totalQuantity += cartItem.quantity
+  });
+  console.log(totalQuantity);
+  
   return (
     <div className="header">
       <div className="left-section">
@@ -49,7 +69,7 @@ function Header() {
             alt="Cart"
           />
 
-          <div className="cart-quantity">3</div>
+          <div className="cart-quantity">{totalQuantity}</div>
           <div className="cart-text">Cart</div>
         </NavLink>
       </div>
