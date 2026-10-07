@@ -14,9 +14,6 @@ function Header() {
     setCart(response.data)
   })
   },[])
-
-
-
   let totalQuantity = 0;
   cart.forEach(cartItem => {
     totalQuantity += cartItem.quantity

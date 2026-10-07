@@ -4,17 +4,38 @@ import Header from '../../Componenet/Header'
 // import { products } from '../../data/products'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useLoaderData } from "react-router";
 
 function Homepage({cart}) {
-  const [products,setProduct] = useState([])
+  const [products,setProducts] = useState([])
 
-  useEffect(()=>{
-    axios.get('http://localhost:3000/api/products')
-  .then((response)=>{
-    console.log(response.data);
-    setProduct(response.data)
-  })
-  },[])
+  // useEffect(()=>{
+  //   axios.get('http://localhost:3000/api/products')
+  // .then((response)=>{
+  //   console.log(response.data);
+  //   setProduct(response.data)
+  // })
+  // },[])
+
+  const [loading, setLoading] = useState(true)
+
+useEffect(() => {
+  axios
+    .get('http://localhost:3000/api/products')
+    .then((response) => {
+      setProducts(response.data)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+}, [])
+
+if (loading) {
+  return <div>Loading...</div>
+}
 
   return (
     
