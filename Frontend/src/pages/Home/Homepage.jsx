@@ -21,7 +21,7 @@ function Homepage({cart}) {
 
 useEffect(() => {
   axios
-    .get('http://localhost:3000/api/products')
+    .get('/api/products')
     .then((response) => {
       setProducts(response.data)
     })
