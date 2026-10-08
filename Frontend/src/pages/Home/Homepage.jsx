@@ -8,7 +8,7 @@ import { useLoaderData } from "react-router";
 import { formatMoney } from '../../utils/money';
 import ProductGrid from './ProductGrid';
 
-function Homepage({cart}) {
+function Homepage({cart,loardCart}) {
   const [products,setProducts] = useState([])
 
   // useEffect(()=>{
@@ -58,7 +58,7 @@ if (loading) {
     <Header cart={cart}/>
     <div className="home-page">
 
-      <ProductGrid products={products} />
+      <ProductGrid products={products} loardCart={loardCart} />
 
     </div>
     </>
