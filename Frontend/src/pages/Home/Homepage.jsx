@@ -21,9 +21,16 @@ function Homepage({cart}) {
 
   const [loading, setLoading] = useState(true)
 
-useEffect(() => {
-  axios
-    .get('/api/products')
+  // useEffect(()=>{
+  //   const homedata = async()=>{
+  //     const response =  await axios.get('/api/products')
+  //     setProducts(response.data)
+  //   }
+  //   homedata();
+  // },[])
+
+  const homedata = async()=>{
+    await axios.get('/api/products')
     .then((response) => {
       setProducts(response.data)
     })
@@ -33,6 +40,11 @@ useEffect(() => {
     .finally(() => {
       setLoading(false)
     })
+  }
+
+useEffect(() => {
+  
+  homedata()
 }, [])
 
 if (loading) {
